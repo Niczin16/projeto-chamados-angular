@@ -1,0 +1,11 @@
+<div>
+    <h3>{{chamadoDoCard().titulo}}</h3>
+
+    <p>Prioridade: {{chamadoDoCard().prioridade}}</p>
+    <p>Status: {{chamadoDoCard().status}}</p>
+    <p>Setpr: {{chamadoDoCard().setor}}</p>
+</div>
+
+@if (chamadoDoCard().prioridade === 'Alta'){
+    <strong>Atendimento prioritário</strong>
+}

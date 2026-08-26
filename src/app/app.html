@@ -1,0 +1,42 @@
+<h1>{{ titulo }}</h1>
+
+<app-cabecalho></app-cabecalho>
+
+<p>
+  Total de chamados: {{ chamados().length }}
+</p>
+
+<button (click)="adicionarChamado()">
+  Adicionar chamado de teste
+</button>
+
+<h2>Primeiro Chamado (Usando o Componente Card)</h2>
+<!-- Corrigido: sem espaços no binding e usando o nome correto do componente -->
+<app-chamados-card [chamadoDoCard]="chamados()[0]"></app-chamados-card>
+
+<h2>Lista completa de Chamados</h2>
+
+@for (chamado of chamados(); track chamado.id) {
+  <div>
+    <h3>{{ chamado.titulo }}</h3>
+    <p>Prioridade: {{ chamado.prioridade }}</p>
+    <p>Status: {{ chamado.status }}</p>
+    <p>Setor: {{ chamado.setor }}</p>
+
+    @if (chamado.prioridade === 'Alta') {
+      <strong>Atendimento prioritário</strong>
+    }
+
+    @if (chamado.setor === 'TI') {
+      <p>Chamado interno da equipe de TI</p>
+    }
+
+    @if (chamado.status === 'Finalizado') {
+      <p>Chamado encerrado.</p>
+    } @else {
+      <p>Chamado ainda ativo.</p>
+    }
+  </div>
+} @empty {
+  <p>Nenhum chamado cadastrado.</p>
+}
